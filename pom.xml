@@ -11,15 +11,23 @@
 	<name>ribbon-meta-filter</name>
 	<description>ribbon-meta-filter</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+	<!--<parent>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-starter-parent</artifactId>-->
+		<!--<version>1.4.6.RELEASE</version>-->
+		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+	<!--</parent>-->
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.4.6.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -40,28 +48,32 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-ribbon</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-test</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<issueManagement>
@@ -123,67 +135,67 @@
 		</plugins>
 	</build>
 
-	<!--<profiles>-->
-		<!--<profile>-->
-			<!--<id>release</id>-->
-			<!--<distributionManagement>-->
-				<!--<snapshotRepository>-->
-					<!--<id>oss</id>-->
-					<!--<url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
-				<!--</snapshotRepository>-->
-				<!--<repository>-->
-					<!--<id>oss</id>-->
-					<!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-				<!--</repository>-->
-			<!--</distributionManagement>-->
-			<!--<build>-->
-				<!--<plugins>-->
-					<!--&lt;!&ndash; Source &ndash;&gt;-->
-					<!--<plugin>-->
-						<!--<groupId>org.apache.maven.plugins</groupId>-->
-						<!--<artifactId>maven-source-plugin</artifactId>-->
-						<!--<version>3.0.1</version>-->
-						<!--<executions>-->
-							<!--<execution>-->
-								<!--<phase>package</phase>-->
-								<!--<goals>-->
-									<!--<goal>jar-no-fork</goal>-->
-								<!--</goals>-->
-							<!--</execution>-->
-						<!--</executions>-->
-					<!--</plugin>-->
-					<!--&lt;!&ndash; Javadoc &ndash;&gt;-->
-					<!--<plugin>-->
-						<!--<groupId>org.apache.maven.plugins</groupId>-->
-						<!--<artifactId>maven-javadoc-plugin</artifactId>-->
-						<!--<version>2.10.4</version>-->
-						<!--<executions>-->
-							<!--<execution>-->
-								<!--<phase>package</phase>-->
-								<!--<goals>-->
-									<!--<goal>jar</goal>-->
-								<!--</goals>-->
-							<!--</execution>-->
-						<!--</executions>-->
-					<!--</plugin>-->
-					<!--&lt;!&ndash; Gpg Signature &ndash;&gt;-->
-					<!--<plugin>-->
-						<!--<groupId>org.apache.maven.plugins</groupId>-->
-						<!--<artifactId>maven-gpg-plugin</artifactId>-->
-						<!--<version>1.6</version>-->
-						<!--<executions>-->
-							<!--<execution>-->
-								<!--<id>sign-artifacts</id>-->
-								<!--<phase>verify</phase>-->
-								<!--<goals>-->
-									<!--<goal>sign</goal>-->
-								<!--</goals>-->
-							<!--</execution>-->
-						<!--</executions>-->
-					<!--</plugin>-->
-				<!--</plugins>-->
-			<!--</build>-->
-		<!--</profile>-->
-	<!--</profiles>-->
+	<profiles>
+		<profile>
+			<id>release</id>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>oss</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>oss</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+			<build>
+				<plugins>
+					<!-- Source -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.0.1</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.10.4</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Gpg Signature -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
