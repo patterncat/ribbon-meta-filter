@@ -28,8 +28,6 @@ public class MetadataAwarePredicate extends AbstractServerPredicate{
         final Set<Map.Entry<String, String>> attributes = Collections.unmodifiableSet(context.getAttributes().entrySet());
         final Map<String, String> metadata = server.getInstanceInfo().getMetadata();
         boolean result = metadata.entrySet().containsAll(attributes);
-        //fix bug : clear thread local
-        RibbonFilterContextHolder.clearCurrentContext();
         return result;
     }
 }
