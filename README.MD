@@ -1,7 +1,12 @@
 ## fork
 fork from https://github.com/jmnarloch/ribbon-discovery-filter-spring-cloud-starter
 
-##fix bug
+#changelog
+##version 0.0.2
+- fix bug:clear context thread local
+- move parent to dependency management
+
+##version 0.0.1
 ```
 demo:
   ribbon:

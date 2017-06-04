@@ -5,11 +5,12 @@
 
 	<groupId>cn.patterncat.ribbon</groupId>
 	<artifactId>ribbon-meta-filter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>ribbon-meta-filter</name>
 	<description>ribbon-meta-filter</description>
+	<url>http://patterncat.cn/article/springcloud-canary-route</url>
 
 	<!--<parent>-->
 		<!--<groupId>org.springframework.boot</groupId>-->
